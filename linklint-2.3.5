@@ -3305,7 +3305,9 @@ sub Parse
 
     local(%checked);
 
-    ($flag = &Disallowed($url, 0.5)) && return ($flag, $LINK);
+    # PATCH: ignore robots.txt - JSB 2012-08-22
+    # 
+    # ($flag = &Disallowed($url, 0.5)) && return ($flag, $LINK);
 
     $flag = &Request($host, $port, $LINK, 'GET', *GetParse, @param);
 
