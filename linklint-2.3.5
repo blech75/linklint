@@ -1453,6 +1453,14 @@ TAG:
             $anch && $url =~ m#^/# && ! $Arg{no_anchors} &&
                 &AppendList(*WantAnch, "$url$anch", $link);
         }
+
+        # PATCH: ignore ID attribute in DIV elements - JSB 2002-12-02
+        # 
+        # elsif ( /^div$/ ) {
+        #     $att =~ s/\sid${ATTRIB}//io && ! $Arg{no_anchors} && 
+        #         ($Anchor{"$CurFile#$+"} = "\n");
+        # }
+
         elsif ( /^base$/ ) {
             $att =~ /\shref${ATTRIB}/io || next;
             $DbP && print $ErrTag;
